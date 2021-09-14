@@ -15,11 +15,13 @@
 					<form method="post" th:action="@{/settings}" th:object="${user}">
 						<div id="version">Version selection goes here</div>
 						<fieldset>
-								<div th:each="bibleVersion : ${bibleVersions}"><input
+							<ul>
+								<li th:each="bibleVersion : ${bibleVersions}"><input
 									type="radio" th:field="${user.bibleVersion}"
 									th:value="${bibleVersion.table}" /> <label
 									th:for="${bibleVersion.table}"
-									th:text="${bibleVersion.version}"></label></div>
+									th:text="${bibleVersion.version}"></label></li>
+							</ul>
 						</fieldset>
 
 
