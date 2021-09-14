@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Scriptures on
+		<p th:text="${bookNumber}" />
+	</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<p th:text="'Your Top 5 Scriptures to memorize today on ' + ${categoryName} + '!'" />
+	<table>
+		<tr th:each="scriptures : ${bookScriptures5}">
+			<td th:text="${scriptures.book}"></td>
+			<td th:text="${scriptures.chapter}"></td>
+			<td th:text="${scriptures.verse}"></td>
+			<td th:text="${scriptures.text}"></td>
+		</tr>
+	</table>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>Login Up - Memorize the Bible</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<link th:href="@{/styles/cssandjs/login.css}" rel="stylesheet" />
+	<style>
+		input {
+			cursor: inherit;
+		}
+
+		.a {
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<form th:action="@{/login}" method="post">
+		<div id="login-box">
+			<div class="left">
+			       <div th:if="${param.error}">
+                        <div class="alert alert-danger">
+                            Invalid username and password.
+                        </div>
+                    </div>
+				<h1>Log In</h1>
+				<input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus />
+				<input type="password" id="password" name="password" class="form-control" placeholder="Password" required />
+
+				<input type="submit" name="login_submit" value="Login" />
+
+				<br><br>
+				<a class="link" th:href="@{/signup}"> Sign Up </a> <br>
+				<a class="link" th:href="@{/signup}"> Forgot password </a>
+			</div>
+
+
+			<div class="right">
+				<span class="loginwith">Log in with<br />social network</span>
+
+				<button class="social-signin facebook">Log in with facebook</button>
+				<button class="social-signin twitter">Log in with Twitter</button>
+				<button class="social-signin google">Log in with Google+</button>
+			</div>
+			<div class="or">OR</div>
+		</div>
+	</form>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>Sign Up - Memorize the Bible</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<link th:href="@{/styles/cssandjs/signup.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div id="login-box">
+		<div class="left">
+			<h1>Sign up</h1>
+			<form th:action="@{/signup}" th:object="${user}" method="post">
+				<input type="text" th:field="*{firstName}" name="first_name" placeholder="First Name"
+					class="form-control" required minlength="2" maxlength="20" />
+				<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</p>
+				<input type="text" th:field="*{lastName}" name="last_name" placeholder="Last Name" class="form-control"
+                            required minlength="2" maxlength="20"/>
+                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</p>
+				<input type="email" th:field="*{email}" name="email" placeholder="E-mail" class="form-control" required/>
+				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>
+				<p th:text="${message}"> Email Already Exists </p>
+				<input type="password" th:field="*{password}" name="password" placeholder="Password" class="form-control"
+                            required minlength="6" maxlength="10" />
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+				<input type="password" th:field="*{matchingPassword}" name="password2" placeholder="Retype password" />
+				<p th:if="${#fields.errors('matchingPassword')}" th:errors="*{matchingPassword}">Password Error</p>
+				<input type="submit" name="signup_submit" value="Sign me up" />
+			</form>
+		</div>
+
+		<div class="right">
+			<span class="loginwith">Sign in with<br />social network</span>
+
+			<button class="social-signin facebook">Log in with facebook</button>
+			<button class="social-signin twitter">Log in with Twitter</button>
+			<button class="social-signin google">Log in with Google+</button>
+		</div>
+		<div class="or">OR</div>
+	</div>
+</body>
+
+</html>

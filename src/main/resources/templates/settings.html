@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Up - Memorize the Bible</title>
+<!--/*/ <th:block th:include="fragments/general.html :: headerfiles">
+        </th:block> /*/-->
+</head>
+<body>
+	<div id="content">
+		<div class="inner">
+			<article class="box post post-excerpt">
+				<header>
+					<h2>Choose Your Settings</h2>
+					<form method="post" th:action="@{/settings}" th:object="${user}">
+						<div id="version">Version selection goes here</div>
+						<fieldset>
+								<div th:each="bibleVersion : ${bibleVersions}"><input
+									type="radio" th:field="${user.bibleVersion}"
+									th:value="${bibleVersion.table}" /> <label
+									th:for="${bibleVersion.table}"
+									th:text="${bibleVersion.version}"></label></div>
+						</fieldset>
+
+
+						<div id="categories">Category Selection goes Here</div>
+						<fieldset>
+							<legend>Select categories of scripture</legend>
+							<input type="checkbox" name="favorite_pet" value="Cats">Cats<br>
+							<input type="checkbox" name="favorite_pet" value="Dogs">Dogs<br>
+							<input type="checkbox" name="favorite_pet" value="Birds">Birds<br>
+							<br> <input type="submit" value="Submit now" />
+						</fieldset>
+						<div id="frequency">Selection of frequency goes here</div>
+						<input type="submit" value="Submit" />
+					</form>
+				</header>
+			</article>
+		</div>
+	</div>
+	<div th:replace="fragments/general.html::sidebar"></div>
+	<div th:replace="fragments/general.html::scripts"></div>
+
+</body>
+</html>
